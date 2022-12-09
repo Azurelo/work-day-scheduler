@@ -40,12 +40,12 @@ $(function () {
   };
 
   classUpdater();
-  // TODO: Set LocalStorage to display: WIP
+  // TODO: Set LocalStorage to display: Complete
   // Loads saved appointment descriptions
   //Simplified with for loop?
 
   //First Go
-/* $("#hour-8 .description").val(localStorage.getItem("hour-8"));
+/*
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -54,10 +54,11 @@ $(function () {
   $("#hour-14 .description").val(localStorage.getItem("hour-14"));
   $("#hour-15 .description").val(localStorage.getItem("hour-15"));
   $("#hour-16 .description").val(localStorage.getItem("hour-16"));
-  $("#hour-17 .description").val(localStorage.getItem("hour-17")); */
+  $("#hour-17 .description").val(localStorage.getItem("hour-17")); 
+*/
 
   //Second Go with for loop
-  for (var hour = 8; hour <= 17; hour++) {
+  for (var hour = 9; hour <= 17; hour++) {
     $('#hour-' + hour + ' .description').val(localStorage.getItem('hour-' + hour));
   }
   
