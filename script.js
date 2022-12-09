@@ -1,25 +1,18 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-
 var setToday = $('#currentDay');
 todayHour = dayjs().hour();
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-    $(".saveBtn").on("click", function () {
-        
-    var text = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id");
 
-   
-    localStorage.setItem(time, text);
+$(function () {
+  // TODO: Add a listener for click events on the save button. Complete!
+    $(".saveBtn").on("click", function () { 
+    var appointmentText = $(this).siblings(".description").val();
+    var appointmentTime = $(this).parent().attr("id");
+    localStorage.setItem(appointmentTime, appointmentText);
 });
-  // Update Class Completed!
+
+  //TODO: Update Class Completed!
   function classUpdater() {
   // For each element in the html with class time-block the function gets the
   //id, splits it and parses to an number which can be used an the if statements below
@@ -47,14 +40,12 @@ $(function () {
   };
 
   classUpdater();
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
+  // TODO: Set LocalStorage to display: WIP
   // Loads saved appointment descriptions
-
   //Simplified with for loop?
-  $("#hour-8 .description").val(localStorage.getItem("hour-8"));
+
+  //First Go
+/* $("#hour-8 .description").val(localStorage.getItem("hour-8"));
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -63,16 +54,15 @@ $(function () {
   $("#hour-14 .description").val(localStorage.getItem("hour-14"));
   $("#hour-15 .description").val(localStorage.getItem("hour-15"));
   $("#hour-16 .description").val(localStorage.getItem("hour-16"));
-  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17")); */
 
-
-
-
-
+  //Second Go with for loop
+  for (var hour = 8; hour <= 17; hour++) {
+    $('#hour-' + hour + ' .description').val(localStorage.getItem('hour-' + hour));
+  }
+  
   // TODO: Add code to display the current date in the header of the page.
-  setToday.text(dayjs().format('Do dddd, MMMM DD'));
-
-/*   var today = new Date();
+  var today = new Date();
   var weekDay = today.getDay();
   var monthIndex = today.getMonth();
   var dateNumber = today.getDate();
@@ -89,5 +79,8 @@ $(function () {
   }
   else{
     setToday.text(dayNamesArray[weekDay] + ", " + monthNamesArray[monthIndex] + " " + dateNumber + "th");
-  } */
+  }
 });
+
+  //This one line was great until I couldn't get the date formatted ordinally
+/*   setToday.text(dayjs().format('Do dddd, MMMM DD')); */
